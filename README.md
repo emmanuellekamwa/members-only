@@ -1,24 +1,25 @@
-# README
+# Members-only
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+In this project, you’ll be building an exclusive clubhouse where your members can write embarrassing posts about non-members. Inside the clubhouse, members can see who the author of a post is but, outside, they can only see the story and wonder who wrote it.
 
-Things you may want to cover:
+# Built with
 
-* Ruby version
+- Ruby on Rails
+- Vscode
+- Rubocop
 
-* System dependencies
+# Getting Started
 
-* Configuration
+- First clone the git repository into your local machine
+- Browse into the repository
+- Run bundle install
+- Sign_up to create a new user, create a new post and log out when you are done
 
-* Database creation
+# Author
 
-* Database initialization
+- Twitter: @AlixKamwa
+- Github: @emmanuellekamwa
 
-* How to run the test suite
+# Show some support
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Give a star if you like this project
