@@ -1,14 +1,14 @@
-class PostController < ApplicationController
+class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
 
   def new
-    @post = current_user.posts.build
+    @post = Post.new
   end
 
   def create
-    @post = current_user.posts.build(params_filter)
+    @posts = current_user.posts.build(params_filter)
 
-    if @post.save
+    if @posts.save
       redirect_to root_path
     else
       render new
@@ -16,7 +16,7 @@ class PostController < ApplicationController
   end
 
   def index
-    @post = Post.all.order('created_at DESC')
+    @posts = Post.all
   end
 
   private
