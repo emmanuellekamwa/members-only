@@ -28,7 +28,7 @@ In this project, you’ll be building an exclusive clubhouse where your members 
 
 Give a star if you like this project
 
-# handshake Contributing
+# Contributing
 
 Contributions, issues, and feature requests are welcome!
 
@@ -38,6 +38,6 @@ Contributions, issues, and feature requests are welcome!
 - Inspiration
 - Microverse
 
-# memo License
+# License
 
 This project is MIT licensed.
