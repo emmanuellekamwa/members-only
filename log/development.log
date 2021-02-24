@@ -2685,3 +2685,329 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 141ms (Views: 138.3ms | ActiveRecord: 0.8ms | Allocations: 6267)
 
 
+Started GET "/" for 127.0.0.1 at 2021-02-24 12:13:33 +0100
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (9.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:3
+  Rendered posts/index.html.erb within layouts/application (Duration: 99.7ms | Allocations: 4429)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 946ms (Views: 556.0ms | ActiveRecord: 10.3ms | Allocations: 12736)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2021-02-24 12:15:03 +0100
+Processing by RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 11.7ms | Allocations: 196)
+  Rendered devise/shared/_links.html.erb (Duration: 13.7ms | Allocations: 502)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 236.8ms | Allocations: 5171)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 584ms (Views: 420.4ms | ActiveRecord: 5.2ms | Allocations: 16589)
+
+
+Started POST "/users" for 127.0.0.1 at 2021-02-24 12:15:47 +0100
+Processing by RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"XOd35wohMYIuYTERPILZzowPRmF47Flu62J3jRQmH7fk4UrevdTknPaxDcoN1oAruIprr/7ZdcL0OZ76jW2Dzw==", "user"=>{"name"=>"Alice", "email"=>"alice@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (5.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "alice@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (7.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "name") VALUES (?, ?, ?, ?, ?)[0m  [["email", "alice@gmail.com"], ["encrypted_password", "$2a$12$T/D34EWdsN6xBeGtXEgkl.5kXrWoFuFTTajGbpbXfSODVRh2e4BQS"], ["created_at", "2021-02-24 11:15:48.269584"], ["updated_at", "2021-02-24 11:15:48.269584"], ["name", "Alice"]]
+  [1m[35m (18.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 792ms (ActiveRecord: 31.5ms | Allocations: 11967)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-24 12:15:48 +0100
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:3
+  Rendered posts/index.html.erb within layouts/application (Duration: 11.9ms | Allocations: 610)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:25
+Completed 200 OK in 71ms (Views: 68.7ms | ActiveRecord: 0.8ms | Allocations: 5625)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2021-02-24 12:15:53 +0100
+Processing by PostsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 18.3ms | Allocations: 1174)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 73ms (Views: 55.7ms | ActiveRecord: 0.2ms | Allocations: 6731)
+
+
+Started POST "/posts" for 127.0.0.1 at 2021-02-24 12:18:21 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"Lec2r1YQBA57JdnfnS4cF0vvFYs6naxM36aQKt3HwUk6Ni190c2EraOh2V4sJxy7VNs/jJmR5jnhScQFrDtjow==", "post"=>{"title"=>"Stupid", "body"=>"The person who just logged out was a very stupid person"}, "commit"=>"Create a post"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[36mPost Create (4.8ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Stupid"], ["body", "The person who just logged out was a very stupid person"], ["user_id", 3], ["created_at", "2021-02-24 11:18:22.423441"], ["updated_at", "2021-02-24 11:18:22.423441"]]
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 569ms (ActiveRecord: 10.3ms | Allocations: 10922)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-24 12:18:22 +0100
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:3
+  Rendered posts/index.html.erb within layouts/application (Duration: 13.2ms | Allocations: 628)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:25
+Completed 200 OK in 76ms (Views: 72.0ms | ActiveRecord: 0.4ms | Allocations: 5502)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-24 12:28:16 +0100
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+SyntaxError (/home/kamwa/members-only/app/helpers/application_helper.rb:14: syntax error, unexpected '<', expecting `end'
+    <% if user_signed_in? %>
+    ^
+/home/kamwa/members-only/app/helpers/application_helper.rb:14: syntax error, unexpected method, expecting `end'
+    <% if user_signed_in? %>
+          ^~~~~~~~~~~~~~~
+/home/kamwa/members-only/app/helpers/application_helper.rb:16: syntax error, unexpected '<'
+                <small>Posted by: 
+                ^
+/home/kamwa/members-only/app/helpers/application_helper.rb:16: syntax error, unexpected tLABEL, expecting `do' or '{' or '('
+...              <small>Posted by: 
+...                            ^~~
+/home/kamwa/members-only/app/helpers/application_helper.rb:17: syntax error, unexpected local variable or method, expecting `end'
+...             <% if current_user.id == post.user.id %>
+...                   ^~~~~~~~~~~~
+/home/kamwa/members-only/app/helpers/application_helper.rb:17: syntax error, unexpected string literal, expecting `end'
+...rent_user.id == post.user.id %>
+...                             ^~
+/home/kamwa/members-only/app/helpers/application_helper.rb:18: syntax error, unexpected constant, expecting `end'
+...an class="font-weight-bold">You</span>
+...                            ^~~
+/home/kamwa/members-only/app/helpers/application_helper.rb:20: unknown regexp options - pa
+...ld"><%= post.user.name %></span>
+...                          ^~~~~
+/home/kamwa/members-only/app/helpers/application_helper.rb:21: syntax error, unexpected '<'
+                    <% end %>
+                    ^
+/home/kamwa/members-only/app/helpers/application_helper.rb:21: syntax error, unexpected '>'
+                    <% end %>
+                            ^
+/home/kamwa/members-only/app/helpers/application_helper.rb:23: unknown regexp options - ftr
+            </footer>
+             ^~~~~~~
+/home/kamwa/members-only/app/helpers/application_helper.rb:24: syntax error, unexpected '<'
+    <% end %>
+    ^
+/home/kamwa/members-only/app/helpers/application_helper.rb:24: syntax error, unexpected '>'
+    <% end %>
+            ^
+):
+  
+app/helpers/application_helper.rb:14: syntax error, unexpected '<', expecting `end'
+app/helpers/application_helper.rb:14: syntax error, unexpected method, expecting `end'
+app/helpers/application_helper.rb:16: syntax error, unexpected '<'
+app/helpers/application_helper.rb:16: syntax error, unexpected tLABEL, expecting `do' or '{' or '('
+app/helpers/application_helper.rb:17: syntax error, unexpected local variable or method, expecting `end'
+app/helpers/application_helper.rb:17: syntax error, unexpected string literal, expecting `end'
+app/helpers/application_helper.rb:18: syntax error, unexpected constant, expecting `end'
+app/helpers/application_helper.rb:20: unknown regexp options - pa
+app/helpers/application_helper.rb:21: syntax error, unexpected '<'
+app/helpers/application_helper.rb:21: syntax error, unexpected '>'
+app/helpers/application_helper.rb:23: unknown regexp options - ftr
+app/helpers/application_helper.rb:24: syntax error, unexpected '<'
+app/helpers/application_helper.rb:24: syntax error, unexpected '>'
+app/helpers/application_helper.rb:14: syntax error, unexpected '<', expecting `end'
+app/helpers/application_helper.rb:14: syntax error, unexpected method, expecting `end'
+app/helpers/application_helper.rb:16: syntax error, unexpected '<'
+app/helpers/application_helper.rb:16: syntax error, unexpected tLABEL, expecting `do' or '{' or '('
+app/helpers/application_helper.rb:17: syntax error, unexpected local variable or method, expecting `end'
+app/helpers/application_helper.rb:17: syntax error, unexpected string literal, expecting `end'
+app/helpers/application_helper.rb:18: syntax error, unexpected constant, expecting `end'
+app/helpers/application_helper.rb:20: unknown regexp options - pa
+app/helpers/application_helper.rb:21: syntax error, unexpected '<'
+app/helpers/application_helper.rb:21: syntax error, unexpected '>'
+app/helpers/application_helper.rb:23: unknown regexp options - ftr
+app/helpers/application_helper.rb:24: syntax error, unexpected '<'
+app/helpers/application_helper.rb:24: syntax error, unexpected '>'
+app/helpers/application_helper.rb:14: syntax error, unexpected '<', expecting `end'
+app/helpers/application_helper.rb:14: syntax error, unexpected method, expecting `end'
+app/helpers/application_helper.rb:16: syntax error, unexpected '<'
+app/helpers/application_helper.rb:16: syntax error, unexpected tLABEL, expecting `do' or '{' or '('
+app/helpers/application_helper.rb:17: syntax error, unexpected local variable or method, expecting `end'
+app/helpers/application_helper.rb:17: syntax error, unexpected string literal, expecting `end'
+app/helpers/application_helper.rb:18: syntax error, unexpected constant, expecting `end'
+app/helpers/application_helper.rb:20: unknown regexp options - pa
+app/helpers/application_helper.rb:21: syntax error, unexpected '<'
+app/helpers/application_helper.rb:21: syntax error, unexpected '>'
+app/helpers/application_helper.rb:23: unknown regexp options - ftr
+app/helpers/application_helper.rb:24: syntax error, unexpected '<'
+app/helpers/application_helper.rb:24: syntax error, unexpected '>'
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/posts_controller.rb:1:in `<main>'
+Started GET "/" for 127.0.0.1 at 2021-02-24 12:47:46 +0100
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+SyntaxError (/home/kamwa/members-only/app/helpers/application_helper.rb:4: syntax error, unexpected '<', expecting `end'
+    <% if user_signed_in? %>
+    ^
+/home/kamwa/members-only/app/helpers/application_helper.rb:4: syntax error, unexpected method, expecting `end'
+    <% if user_signed_in? %>
+          ^~~~~~~~~~~~~~~
+/home/kamwa/members-only/app/helpers/application_helper.rb:6: syntax error, unexpected '<'
+                <small>Posted by: 
+                ^
+/home/kamwa/members-only/app/helpers/application_helper.rb:6: syntax error, unexpected tLABEL, expecting `do' or '{' or '('
+...              <small>Posted by: 
+...                            ^~~
+/home/kamwa/members-only/app/helpers/application_helper.rb:7: syntax error, unexpected local variable or method, expecting `end'
+...             <% if current_user.id == post.user.id %>
+...                   ^~~~~~~~~~~~
+/home/kamwa/members-only/app/helpers/application_helper.rb:7: syntax error, unexpected string literal, expecting `end'
+...rent_user.id == post.user.id %>
+...                             ^~
+/home/kamwa/members-only/app/helpers/application_helper.rb:8: syntax error, unexpected constant, expecting `end'
+...an class="font-weight-bold">You</span>
+...                            ^~~
+/home/kamwa/members-only/app/helpers/application_helper.rb:10: unknown regexp options - pa
+...ld"><%= post.user.name %></span>
+...                          ^~~~~
+/home/kamwa/members-only/app/helpers/application_helper.rb:11: syntax error, unexpected '<'
+                    <% end %>
+                    ^
+/home/kamwa/members-only/app/helpers/application_helper.rb:11: syntax error, unexpected '>'
+                    <% end %>
+                            ^
+/home/kamwa/members-only/app/helpers/application_helper.rb:13: unknown regexp options - ftr
+            </footer>
+             ^~~~~~~
+/home/kamwa/members-only/app/helpers/application_helper.rb:14: syntax error, unexpected '<'
+    <% end %>
+    ^
+/home/kamwa/members-only/app/helpers/application_helper.rb:14: syntax error, unexpected '>'
+    <% end %>
+            ^
+):
+  
+app/helpers/application_helper.rb:4: syntax error, unexpected '<', expecting `end'
+app/helpers/application_helper.rb:4: syntax error, unexpected method, expecting `end'
+app/helpers/application_helper.rb:6: syntax error, unexpected '<'
+app/helpers/application_helper.rb:6: syntax error, unexpected tLABEL, expecting `do' or '{' or '('
+app/helpers/application_helper.rb:7: syntax error, unexpected local variable or method, expecting `end'
+app/helpers/application_helper.rb:7: syntax error, unexpected string literal, expecting `end'
+app/helpers/application_helper.rb:8: syntax error, unexpected constant, expecting `end'
+app/helpers/application_helper.rb:10: unknown regexp options - pa
+app/helpers/application_helper.rb:11: syntax error, unexpected '<'
+app/helpers/application_helper.rb:11: syntax error, unexpected '>'
+app/helpers/application_helper.rb:13: unknown regexp options - ftr
+app/helpers/application_helper.rb:14: syntax error, unexpected '<'
+app/helpers/application_helper.rb:14: syntax error, unexpected '>'
+app/helpers/application_helper.rb:4: syntax error, unexpected '<', expecting `end'
+app/helpers/application_helper.rb:4: syntax error, unexpected method, expecting `end'
+app/helpers/application_helper.rb:6: syntax error, unexpected '<'
+app/helpers/application_helper.rb:6: syntax error, unexpected tLABEL, expecting `do' or '{' or '('
+app/helpers/application_helper.rb:7: syntax error, unexpected local variable or method, expecting `end'
+app/helpers/application_helper.rb:7: syntax error, unexpected string literal, expecting `end'
+app/helpers/application_helper.rb:8: syntax error, unexpected constant, expecting `end'
+app/helpers/application_helper.rb:10: unknown regexp options - pa
+app/helpers/application_helper.rb:11: syntax error, unexpected '<'
+app/helpers/application_helper.rb:11: syntax error, unexpected '>'
+app/helpers/application_helper.rb:13: unknown regexp options - ftr
+app/helpers/application_helper.rb:14: syntax error, unexpected '<'
+app/helpers/application_helper.rb:14: syntax error, unexpected '>'
+app/helpers/application_helper.rb:4: syntax error, unexpected '<', expecting `end'
+app/helpers/application_helper.rb:4: syntax error, unexpected method, expecting `end'
+app/helpers/application_helper.rb:6: syntax error, unexpected '<'
+app/helpers/application_helper.rb:6: syntax error, unexpected tLABEL, expecting `do' or '{' or '('
+app/helpers/application_helper.rb:7: syntax error, unexpected local variable or method, expecting `end'
+app/helpers/application_helper.rb:7: syntax error, unexpected string literal, expecting `end'
+app/helpers/application_helper.rb:8: syntax error, unexpected constant, expecting `end'
+app/helpers/application_helper.rb:10: unknown regexp options - pa
+app/helpers/application_helper.rb:11: syntax error, unexpected '<'
+app/helpers/application_helper.rb:11: syntax error, unexpected '>'
+app/helpers/application_helper.rb:13: unknown regexp options - ftr
+app/helpers/application_helper.rb:14: syntax error, unexpected '<'
+app/helpers/application_helper.rb:14: syntax error, unexpected '>'
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/posts_controller.rb:1:in `<main>'
+Started GET "/" for 127.0.0.1 at 2021-02-24 13:33:57 +0100
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (3.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:3
+  Rendered posts/index.html.erb within layouts/application (Duration: 66.6ms | Allocations: 3845)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:25
+Completed 200 OK in 227ms (Views: 206.2ms | ActiveRecord: 5.3ms | Allocations: 15305)
+
+
+Started GET "/comments" for 127.0.0.1 at 2021-02-24 13:34:12 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/comments"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2021-02-24 13:38:14 +0100
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:3
+  Rendered posts/index.html.erb within layouts/application (Duration: 96.6ms | Allocations: 3980)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:25
+Completed 200 OK in 476ms (Views: 419.0ms | ActiveRecord: 4.3ms | Allocations: 14636)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-24 13:54:34 +0100
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (11.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/_post.html.erb:2
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:10
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:13
+  [1m[36mUser Load (5.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:13
+  Rendered posts/_post.html.erb (Duration: 282.4ms | Allocations: 11935)
+  Rendered posts/index.html.erb within layouts/application (Duration: 285.6ms | Allocations: 12223)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 411ms (Views: 348.3ms | ActiveRecord: 18.5ms | Allocations: 17899)
+
+
